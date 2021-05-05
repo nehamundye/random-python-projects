@@ -24,7 +24,7 @@ def hide_word(guessed_letter):
 
 
 
-def remaining_guesses(guessed_letter, guess_no):
+def remaining_guesses(letter_input, guess_no):
     if letter_input not in word:
         guess_no -= 1
     return guess_no
@@ -32,7 +32,6 @@ def remaining_guesses(guessed_letter, guess_no):
 guess_no = 6
 hide = hide_word(guessed_letter)
 
-print(word)
 
 while guess_no != 0:
     print(f"Word: {hide} & guessed letters: {guessed_letter} & remaining guesses: {guess_no}")
