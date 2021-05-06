@@ -32,39 +32,39 @@ def bulls(list, mapped_index):
  
 if __name__=="__main__":
     print("Welcome to the Cows and Bulls Game! ")
-user_input = int(input("Enter a 4 digit number: "))
-random_number = random_number()
-random_number_list = number_list(random_number)
-guess_count = 1
-
-
-while user_input != random_number:
-    user_input_list = number_list(user_input)
-
-    # check for cows_count. 
-    cows_count = 0
-    mapped_index = []
-    for i in range(0, len(user_input_list)):
-        if user_input_list[i] == random_number_list[i]:
-            cows_count += 1
-            mapped_index.append(i)
-
-
-    # check for bulls.
-    bulls_count = 0
-    if mapped_index:
-        # create a new list for user_input_list and random_number_list excluding cows_count/mapped_index
-        bulls_user_input_list = bulls(user_input_list, mapped_index)
-        bulls_random_number_list = bulls(random_number_list, mapped_index)
-
-        for elem in bulls_user_input_list:
-            if elem in bulls_random_number_list:
-                bulls_count += 1
-
-    
-    print(f"{cows_count} cows and {bulls_count} bulls and guess count: {guess_count}")
-    guess_count += 1
     user_input = int(input("Enter a 4 digit number: "))
+    random_number = random_number()
+    random_number_list = number_list(random_number)
+    guess_count = 1
 
 
-print(f"You won. The number was {random_number}. Your guess count: {guess_count}")
+    while user_input != random_number:
+        user_input_list = number_list(user_input)
+
+        # check for cows_count. 
+        cows_count = 0
+        mapped_index = []
+        for i in range(0, len(user_input_list)):
+            if user_input_list[i] == random_number_list[i]:
+                cows_count += 1
+                mapped_index.append(i)
+
+
+        # check for bulls.
+        bulls_count = 0
+        if mapped_index:
+            # create a new list for user_input_list and random_number_list excluding cows_count/mapped_index
+            bulls_user_input_list = bulls(user_input_list, mapped_index)
+            bulls_random_number_list = bulls(random_number_list, mapped_index)
+
+            for elem in bulls_user_input_list:
+                if elem in bulls_random_number_list:
+                    bulls_count += 1
+
+        
+        print(f"{cows_count} cows and {bulls_count} bulls and guess count: {guess_count}")
+        guess_count += 1
+        user_input = int(input("Enter a 4 digit number: "))
+
+
+    print(f"You won. The number was {random_number}. Your guess count: {guess_count}")
