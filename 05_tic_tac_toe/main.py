@@ -117,49 +117,49 @@ o_input_list = []
 draw_board()
 print("\r")
 
-
-while True:
-
-    # Validation to get user_input to be in the range 1 to 9
+if __name__ == '__main__':
     while True:
-        x_input = input("Player X. Input X in position (1 to 9): ")
-        if x_input in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-            x_input = int(x_input)
-            if x_input in x_input_list or x_input in o_input_list:
-                print(f"Position {x_input} is alreay taken. Please input another position")
-            if x_input not in x_input_list and x_input not in o_input_list:
-                break
 
-    x_input_list.append(x_input)
+        # Validation to get user_input to be in the range 1 to 9
+        while True:
+            x_input = input("Player X. Input X in position (1 to 9): ")
+            if x_input in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+                x_input = int(x_input)
+                if x_input in x_input_list or x_input in o_input_list:
+                    print(f"Position {x_input} is alreay taken. Please input another position")
+                if x_input not in x_input_list and x_input not in o_input_list:
+                    break
 
-    draw_current_board(display_board, current_board, x_input_list, o_input_list)
-    print("\r")
-    
-    
-    # check if X won
-    if (check_left_diagnol(x_input_list) or check_right_diagnol(x_input_list) or check_row_top(x_input_list) or check_row_middle(x_input_list) or check_row_bottom(x_input_list) or check_col_top(x_input_list) or check_col_middle(x_input_list) or check_col_bottom(x_input_list)):
-        print("Player X won!")
-        break
+        x_input_list.append(x_input)
 
-    if len(x_input_list) == 5:
-        print("Its a tie.")
-        break
+        draw_current_board(display_board, current_board, x_input_list, o_input_list)
+        print("\r")
+        
+        
+        # check if X won
+        if (check_left_diagnol(x_input_list) or check_right_diagnol(x_input_list) or check_row_top(x_input_list) or check_row_middle(x_input_list) or check_row_bottom(x_input_list) or check_col_top(x_input_list) or check_col_middle(x_input_list) or check_col_bottom(x_input_list)):
+            print("Player X won!")
+            break
 
-    # Computer's turn
-    o_input = random.randint(1,9)
-    while o_input in x_input_list or o_input in o_input_list:
+        if len(x_input_list) == 5:
+            print("Its a tie.")
+            break
+
+        # Computer's turn
         o_input = random.randint(1,9)
+        while o_input in x_input_list or o_input in o_input_list:
+            o_input = random.randint(1,9)
 
-    o_input_list.append(o_input)
+        o_input_list.append(o_input)
 
-    print(f"Player O chose position {o_input}")
-    draw_current_board(display_board, current_board, x_input_list, o_input_list)
-    print("\n")
+        print(f"Player O chose position {o_input}")
+        draw_current_board(display_board, current_board, x_input_list, o_input_list)
+        print("\n")
 
-    # check if O won
-    if (check_left_diagnol(o_input_list) or check_right_diagnol(o_input_list) or check_row_top(o_input_list) or check_row_middle(o_input_list) or check_row_bottom(o_input_list) or check_col_top(o_input_list) or check_col_middle(o_input_list) or check_col_bottom(o_input_list)):
-        print("Player O won!")
-        break
+        # check if O won
+        if (check_left_diagnol(o_input_list) or check_right_diagnol(o_input_list) or check_row_top(o_input_list) or check_row_middle(o_input_list) or check_row_bottom(o_input_list) or check_col_top(o_input_list) or check_col_middle(o_input_list) or check_col_bottom(o_input_list)):
+            print("Player O won!")
+            break
 
     
 
