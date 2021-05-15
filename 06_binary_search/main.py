@@ -34,12 +34,12 @@ def naive_search():
 def binary_search(low_index, middle_index, high_index):
 
     if search_number == number_list[middle_index]:
-        print(f"Found the search_number, index: {middle_index}")
+        print(f"Binary Search: Found the search_number {search_number} is at index: {middle_index}")
 
     else:   
         while (low_index != middle_index) and (high_index != middle_index):
             if search_number == number_list[middle_index]:
-                print(f"Found the search_number, {search_number} is at index: {middle_index}")
+                print(f"Binary Search: Found the search_number {search_number} is at index: {middle_index}")
                 break
 
             elif search_number > number_list[middle_index]:
@@ -54,8 +54,10 @@ def binary_search(low_index, middle_index, high_index):
 
 
     if (low_index == middle_index) or (high_index == middle_index):
-        if search_number == number_list[middle_index] or search_number == number_list[low_index]:
+        if search_number == number_list[middle_index]:
             print(f"Binary Search: Found the search_number {search_number} at index: {middle_index}")
+        elif search_number == number_list[low_index]:
+            print(f"Binary Search: Found the search_number {search_number} at index: {low_index}")
         else:
             print(f"Binary Search: Search number {search_number} not found.")
 
