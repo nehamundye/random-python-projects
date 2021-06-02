@@ -135,8 +135,6 @@ if __name__ == '__main__':
     board.fillMainGridNumbers()
     main_grid = board.main_grid
     user_grid = board.user_grid
-    print(board.main_grid)
-    print(board.user_grid)
 
     # Show user an empty grid
     print(board)
