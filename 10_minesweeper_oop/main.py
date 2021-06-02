@@ -35,7 +35,7 @@ class Board(object):
             num_grid + draw_horizontal_line
         return user_grid_str_rep
 
-    def plantMinesInMainGrid(self):
+    def plant_mine_in_main_grid(self):
         '''
         Adds mine to main grid.
         '''
@@ -48,7 +48,7 @@ class Board(object):
                 self.main_grid[row][col] = -1
                 mine_count += 1
 
-    def fillMainGridNumbers(self):
+    def fill_main_grid_numbers(self):
         '''
         Fills all cells of the main grid. This grid will have mines and all cells filled with number of mines or 0.
         '''
@@ -63,7 +63,7 @@ class Board(object):
                             if (0 <= (r+i) <= self.grid_size-1) and (0 <= c-j+1 <= self.grid_size-1) and (r+i, c-j+1) != (r, c) and self.main_grid[r+i][c-j+1] != -1:
                                 self.main_grid[r+i][c-j+1] += 1
 
-    def dug_neighboring_cells(self, cellindex_withzero_value):
+    def dig_neighboring_cells(self, cellindex_withzero_value):
         '''
         If the user digs a 0-valued cell, then all the neighboring elements must be displayed until a non-zero-valued cell is reached.
         This Funtion updates the user_grid. Returns None.
@@ -103,7 +103,7 @@ class Board(object):
         if len(neighboring_cells) == 0:
             return neighboring_cells
         else:
-            self.dug_neighboring_cells(neighboring_cells)
+            self.dig_neighboring_cells(neighboring_cells)
 
     def is_winner(self):
         '''
@@ -129,10 +129,11 @@ if __name__ == '__main__':
     #       Check: a. If input is a mine -> Game Over
     #              b. If input is a number/not a mine -> Display that cell/grid
     #              c. If input is 0-valued cell -> Dsiplay all neighboring cells until we reach non-zero cell
+    # Keep asking for user input until all cells are correctly filled (user wins) or user digs a mine
     board = Board(4, 2)
 
-    board.plantMinesInMainGrid()
-    board.fillMainGridNumbers()
+    board.plant_mine_in_main_grid()
+    board.fill_main_grid_numbers()
     main_grid = board.main_grid
     user_grid = board.user_grid
 
@@ -162,7 +163,7 @@ if __name__ == '__main__':
                 print(board)
             elif main_grid[int(user_input[0])-1][int(user_input[1])-1] == 0:
                 user_grid[int(user_input[0])-1][int(user_input[1])-1] = 0
-                board.dug_neighboring_cells(
+                board.dig_neighboring_cells(
                     [(int(user_input[0])-1, int(user_input[1])-1)])
                 print(board)
         # else if the len > 2 and has F in input, then show the grid
