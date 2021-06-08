@@ -13,6 +13,7 @@ def pick_word():
 word = pick_word()
 guessed_letter = []
 
+
 def hide_word(guessed_letter):
     hide = ""
     for letter in word:
@@ -23,11 +24,11 @@ def hide_word(guessed_letter):
     return hide
 
 
-
 def remaining_guesses(letter_input, guess_no):
     if letter_input not in word:
         guess_no -= 1
     return guess_no
+
 
 guess_no = 6
 hide = hide_word(guessed_letter)
@@ -35,7 +36,6 @@ hide = hide_word(guessed_letter)
 
 while guess_no != 0:
     print(f"Word: {hide} & guessed letters: {guessed_letter} & remaining guesses: {guess_no}")
-    
 
     # Display a message if letter was already guessed.
     while True:
@@ -46,8 +46,6 @@ while guess_no != 0:
             break
 
     guessed_letter.append(letter_input)
-
-    
 
     # If guessed_letter in word, then display hide_word including this letter.
     hide = hide_word(guessed_letter)
